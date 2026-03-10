@@ -1,0 +1,72 @@
+{
+  "name": "AOB Lead Magnet Quizzes",
+  "description": "Interactive quizzes for lead capture",
+  "status": "active",
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Create quiz content and questions",
+      "description": "Write quiz questions and answers for both quizzes",
+      "status": "in_progress",
+      "assignee": "writer"
+    },
+    {
+      "id": "2",
+      "name": "Design quiz UI/UX",
+      "description": "Create wireframes and design for quiz pages",
+      "status": "pending",
+      "assignee": "ui-designer"
+    },
+    {
+      "id": "3",
+      "name": "Build quiz frontend",
+      "description": "Develop quiz pages with React/Vue",
+      "status": "pending",
+      "assignee": "frontend-developer"
+    },
+    {
+      "id": "4",
+      "name": "Integrate email capture",
+      "description": "Connect quizzes to Ontraport forms",
+      "status": "pending",
+      "assignee": "backend-architect"
+    },
+    {
+      "id": "5",
+      "name": "SEO optimization",
+      "description": "Optimize quiz pages for search engines",
+      "status": "pending",
+      "assignee": "seo-specialist"
+    },
+    {
+      "id": "6",
+      "name": "Deploy to WordPress",
+      "description": "Deploy quizzes to alchemyofbreath.com",
+      "status": "pending",
+      "assignee": "devops-automator"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "m1",
+      "name": "Quiz Content Complete",
+      "tasks": ["1"]
+    },
+    {
+      "id": "m2",
+      "name": "Design Complete",
+      "tasks": ["2"]
+    },
+    {
+      "id": "m3",
+      "name": "Development Complete",
+      "tasks": ["3", "4"]
+    },
+    {
+      "id": "m4",
+      "name": "Launch",
+      "tasks": ["5", "6"]
+    }
+  ],
+  "created": "2026-03-10T22:45:00.000Z"
+}
