@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover Your Breathwork Style | Alchemy of Breath</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2D5A4A;
+      --primary-dark: #1E3F32;
+      --secondary: #D4A574;
+      --accent: #8B4513;
+      --bg: #FAF7F2;
+      --bg-light: #F5EFE6;
+      --text: #333333;
+      --text-light: #666666;
+      --white: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Landing Page */
+    .landing {
+      padding: 60px 20px;
+    }
+
+    .quiz-cards {
+      display: grid;
+      gap: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .quiz-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .quiz-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      border-color: var(--secondary);
+    }
+
+    .quiz-card h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .quiz-card p {
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+
+    .quiz-card .btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 15px 40px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .quiz-card .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Quiz Page */
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: var(--bg-light);
+      border-radius: 4px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .question-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .question-number {
+      color: var(--secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+
+    .question-title {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .option {
+      padding: 20px 25px;
+      border: 2px solid var(--bg-light);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      background: var(--white);
+      text-align: left;
+    }
+
+    .option:hover {
+      border-color: var(--secondary);
+      background: var(--bg-light);
+    }
+
+    .option.selected {
+      border-color: var(--primary);
+      background: var(--bg-light);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .btn-nav {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back {
+      background: var(--bg-light);
+      color: var(--text);
+    }
+
+    .btn-back:hover {
+      background: #E5DED4;
+    }
+
+    .btn-next {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-next:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-next:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Email Capture */
+    .email-capture {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .email-capture h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .email-capture p {
+      color: var(--text-light);
+      margin-bottom: 30px;
+    }
+
+    .email-form input {
+      width: 100%;
+      padding: 18px 25px;
+      border: 2px solid var(--bg-light);
+      border-radius: 30px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .email-form input:focus {
+      border-color: var(--primary);
+    }
+
+    .email-form .btn {
+      width: 100%;
+      padding: 18px;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .email-form .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .privacy {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* Results Page */
+    .results {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .result-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    }
+
+    .result-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .result-title {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .result-subtitle {
+      color: var(--secondary);
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .result-description {
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .recommendations {
+      text-align: left;
+      background: var(--bg-light);
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .recommendations h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .recommendations ul {
+      list-style: none;
+    }
+
+    .recommendations li {
+      padding: 10px 0;
+      border-bottom: 1px solid #E5DED4;
+    }
+
+    .recommendations li:last-child {
+      border-bottom: none;
+    }
+
+    .recommendations li::before {
+      content: "✓";
+      color: var(--primary);
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .btn-cta {
+      padding: 18px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-light);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 {
+        font-size: 1.8rem;
+      }
+
+      .quiz-card {
+        padding: 30px 20px;
+      }
+
+      .question-card {
+        padding: 25px 20px;
+      }
+
+      .result-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script>
+    // Quiz Data - What's Your Breathwork Style?
+    const breathworkQuiz = {
+      title: "What's Your Breathwork Style?",
+      subtitle: "Discover your unique approach to breathwork",
+      questions: [
+        {
+          id: 1,
+          question: "What brings you to breathwork?",
+          options: [
+            "I want to manage stress and anxiety",
+            "I want to explore my emotions and spirituality",
+            "I want to improve my physical health and energy",
+            "I want to deepen my meditation practice"
+          ]
+        },
+        {
+          id: 2,
+          question: "How do you prefer to work with emotions?",
+          options: [
+            "I prefer gentle, calming approaches",
+            "I want to fully feel and release them",
+            "I want to understand them intellectually first",
+            "I prefer to observe without attachment"
+          ]
+        },
+        {
+          id: 3,
+          question: "What's your meditation experience?",
+          options: [
+            "I'm new to meditation",
+            "I have some experience",
+            "I meditate regularly",
+            "I'm an experienced meditator"
+          ]
+        },
+        {
+          id: 4,
+          question: "What describes your ideal session?",
+          options: [
+            "Quiet, peaceful, restorative",
+            "Dynamic, intense, transformational",
+            "Structured, educational, practical",
+            "Free-form, exploratory, intuitive"
+          ]
+        },
+        {
+          id: 5,
+          question: "What's your main goal?",
+          options: [
+            "Relaxation and stress relief",
+            "Emotional healing and release",
+            "Physical performance and vitality",
+            "Spiritual awakening and self-discovery"
+          ]
+        }
+      ],
+      results: [
+        {
+          type: "A",
+          title: "The Calm Observer",
+          subtitle: "You resonate with gentle, restorative practices",
+          icon: "🌿",
+          description: "You prefer peaceful, calming approaches that help you find balance without overwhelming your system. Your breathwork journey is about creating sanctuary in your daily life.",
+          recommendations: [
+            "Box breathing - 4 counts in, hold, out, hold",
+            "Coherent breathing - balanced, rhythmic breathing",
+            "4-7-8 technique for sleep and anxiety",
+            "Morning calm sessions - 15 minutes gentle breath awareness"
+          ]
+        },
+        {
+          type: "B",
+          title: "The Transformational Breather",
+          subtitle: "You embrace intense, transformational breathwork",
+          icon: "🔥",
+          description: "You're not afraid to go deep. Your breathwork journey is about breaking through limitations and experiencing profound shifts in consciousness and awareness.",
+          recommendations: [
+            "Rebirthing breathwork - connected breathing for emotional release",
+            "Holotropic breathwork - intensive journey work",
+            "Breathwork ceremonies with facilitated holding",
+            "Intensive weekend workshops"
+          ]
+        },
+        {
+          type: "C",
+          title: "The Practical Learner",
+          subtitle: "You prefer structured, results-oriented approaches",
+          icon: "📊",
+          description: "You want techniques that work and produce measurable results. Your breathwork journey is about mastering practical skills you can apply in daily life.",
+          recommendations: [
+            "Functional breath training - nose breathing fundamentals",
+            "Wim Hof Method basics - controlled hyperventilation",
+            "Technique workshops with clear instructions",
+            "Performance optimization breath protocols"
+          ]
+        },
+        {
+          type: "D",
+          title: "The Spiritual Explorer",
+          subtitle: "You seek depth and consciousness exploration",
+          icon: "✨",
+          description: "Your breathwork journey is about transcending the ordinary and exploring the depths of consciousness. You're drawn to ancient practices and spiritual traditions.",
+          recommendations: [
+            "Pranayama - yogic breathing techniques",
+            "Kundalini awakening practices",
+            "Shamanic breathwork journeys",
+            "Meditation retreats for consciousness exploration"
+          ]
+        }
+      ]
+    };
+
+    // App State
+    let state = {
+      page: 'landing', // landing, quiz, email, results
+      currentQuestion: 0,
+      answers: [],
+      result: null,
+      email: ''
+    };
+
+    // Calculate Result
+    function calculateResult(answers) {
+      const counts = { A: 0, B: 0, C: 0, D: 0 };
+      answers.forEach((answer, index) => {
+        counts[answer]++;
+      });
+
+      const max = Math.max(...Object.values(counts));
+      const resultType = Object.keys(counts).find(key => counts[key] === max);
+
+      return breathworkQuiz.results.find(r => r.type === resultType);
+    }
+
+    // Render Functions
+    function renderLanding() {
+      return `
+        <header class="header">
+          <h1>Alchemy of Breath</h1>
+          <p>Discover Your Path to Healing</p>
+        </header>
+
+        <main class="landing">
+          <div class="quiz-cards">
+            <div class="quiz-card" onclick="startQuiz()">
+              <h2>What's Your Breathwork Style?</h2>
+              <p>Discover your unique approach to breathwork based on your personality and goals.</p>
+              <button class="btn">Take the Quiz</button>
+            </div>
+
+            <div class="quiz-card" onclick="alert('Coming Soon!')">
+              <h2>What's Your Trauma Healing Path?</h2>
+              <p>Find the healing approach that's right for your unique journey.</p>
+              <button class="btn">Take the Quiz</button>
+            </div>
+          </div>
+        </main>
+
+        <footer class="footer">
+          <p>&copy; 2026 Alchemy of Breath. All rights reserved.</p>
+        </footer>
+      `;
+    }
+
+    function renderQuiz() {
+      const question = breathworkQuiz.questions[state.currentQuestion];
+      const progress = ((state.currentQuestion + 1) / breathworkQuiz.questions.length) * 100;
+
+      return `
+        <div class="quiz-container">
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${progress}%"></div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-number">Question ${state.currentQuestion + 1} of ${breathworkQuiz.questions.length}</div>
+            <h2 class="question-title">${question.question}</h2>
+
+            <div class="options">
+              ${question.options.map((option, index) => {
+                const letter = String.fromCharCode(65 + index);
+                const selected = state.answers[state.currentQuestion] === letter ? 'selected' : '';
+                return `<div class="option ${selected}" onclick="selectOption('${letter}')">${option}</div>`;
+              }).join('')}
+            </div>
+
+            <div class="navigation">
+              <button class="btn-nav btn-back" onclick="prevQuestion()" ${state.currentQuestion === 0 ? 'disabled' : ''}>
+                Back
+              </button>
+              <button class="btn-nav btn-next" onclick="nextQuestion()" ${!state.answers[state.currentQuestion] ? 'disabled' : ''}>
+                ${state.currentQuestion === breathworkQuiz.questions.length - 1 ? 'See Results' : 'Next'}
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderEmailCapture() {
+      return `
+        <div class="email-capture">
+          <h2>🎉 You're Almost There!</h2>
+          <p>Enter your email to discover your personalized breathwork style and get custom recommendations.</p>
+
+          <form class="email-form" onsubmit="submitEmail(event)">
+            <input type="email" placeholder="your@email.com" required value="${state.email}">
+            <button type="submit" class="btn">See My Results</button>
+          </form>
+
+          <p class="privacy">🔒 We respect your privacy. No spam, ever.</p>
+        </div>
+      `;
+    }
+
+    function renderResults() {
+      const result = state.result;
+
+      return `
+        <div class="results">
+          <div class="result-card">
+            <div class="result-icon">${result.icon}</div>
+            <h1 class="result-title">${result.title}</h1>
+            <p class="result-subtitle">${result.subtitle}</p>
+            <p class="result-description">${result.description}</p>
+
+            <div class="recommendations">
+              <h3>Your Recommended Path</h3>
+              <ul>
+                ${result.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+              </ul>
+            </div>
+
+            <div class="cta-buttons">
+              <button class="btn-cta btn-primary" onclick="alert('Consultation booking coming soon!')">
+                Get Your Free Personalized Consultation
+              </button>
+              <button class="btn-cta btn-secondary" onclick="shareResults()">
+                Share Your Results
+              </button>
+            </div>
+          </div>
+
+          <footer class="footer">
+            <p><a href="#">Take the Trauma Healing Quiz</a> →</p>
+          </footer>
+        </div>
+      `;
+    }
+
+    function render() {
+      const app = document.getElementById('app');
+
+      switch(state.page) {
+        case 'landing':
+          app.innerHTML = renderLanding();
+          break;
+        case 'quiz':
+          app.innerHTML = renderQuiz();
+          break;
+        case 'email':
+          app.innerHTML = renderEmailCapture();
+          break;
+        case 'results':
+          app.innerHTML = renderResults();
+          break;
+      }
+    }
+
+    // Actions
+    function startQuiz() {
+      state.page = 'quiz';
+      state.currentQuestion = 0;
+      state.answers = [];
+      render();
+    }
+
+    function selectOption(letter) {
+      state.answers[state.currentQuestion] = letter;
+      render();
+    }
+
+    function prevQuestion() {
+      if (state.currentQuestion > 0) {
+        state.currentQuestion--;
+        render();
+      }
+    }
+
+    function nextQuestion() {
+      if (state.currentQuestion < breathworkQuiz.questions.length - 1) {
+        state.currentQuestion++;
+        render();
+      } else {
+        state.result = calculateResult(state.answers);
+        state.page = 'email';
+        render();
+      }
+    }
+
+    function submitEmail(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input').value;
+      state.email = email;
+      state.page = 'results';
+      render();
+
+      // Here you would integrate with Ontraport to save the lead
+      console.log('Lead captured:', { email: state.email, result: state.result.title });
+    }
+
+    function shareResults() {
+      const text = `I got ${state.result.title}! What's Your Breathwork Style? Take the quiz at alchemyofbreath.com`;
+      if (navigator.share) {
+        navigator.share({ text });
+      } else {
+        navigator.clipboard.writeText(text);
+        alert('Results copied to clipboard!');
+      }
+    }
+
+    // Initialize
+    render();
+  </script>
+</body>
+</html>
