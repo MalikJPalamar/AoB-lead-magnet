@@ -78,11 +78,12 @@ After validation, create automation rules:
    - Send "We miss you" to at-risk
    - Remove cold contacts after re-engagement failure
 
-## Regarding "Reun" App
-
-Note: Could not find specific information about "Reun" app for Ontraport validation.
-- Could you provide more details about this tool?
-- Is it a specific service you use?
+#### Option D: Reoon Email Verifier (RECOMMENDED)
+- **Website**: reoon.com
+- **Features**: Bulk email verification, catch-all detection, spam trap detection
+- **Pricing**: Starts at $0.008/email (very competitive)
+- **Best for**: Large lists (200k+), cost-effective bulk validation
+- **Ontraport Integration**: Export CSV → Reoon → Import cleaned data back
 
 ## Questions for Ontraport Specialist
 
@@ -93,7 +94,8 @@ Note: Could not find specific information about "Reun" app for Ontraport validat
 
 ## Next Steps (Tomorrow)
 
-- [ ] Get Reun API key or alternative service credentials
+- [ ] Get Reoon API key (reoon.com)
+- [ ] Export full contact list from Ontraport
 - [ ] Export full contact list from Ontraport
 - [ ] Set up validation service
 - [ ] Begin batch processing
