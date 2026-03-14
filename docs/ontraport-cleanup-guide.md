@@ -96,7 +96,6 @@ After validation, create automation rules:
 
 - [ ] Get Reoon API key (reoon.com)
 - [ ] Export full contact list from Ontraport
-- [ ] Export full contact list from Ontraport
 - [ ] Set up validation service
 - [ ] Begin batch processing
 - [ ] Configure import back to Ontraport
